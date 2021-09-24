@@ -273,7 +273,7 @@ void gameNim (){
 
 int main(){
 
-int Game,repeat;
+int game,repeat;
 do{
     system ("cls");
     printf("\t\t\t\tBIENVENIDO\n");
@@ -284,20 +284,21 @@ do{
     printf("3.JUEGO DE NIM\n");
         pictureNim();
     printf("Selecione una opcion:");
-    scanf("%d", &Game);
+    scanf("%d", &game);
     fflush (stdin);
 
-    switch (Game){
-        case 1:
-            gameAhorcado();
-            repeat = checkOutputGame(); 
-        break;
-        case 2:
-            repeat = checkOutputGame();
-        break;
-        case 3:
-            repeat = checkOutputGame();
-        break;
+    if (game == 1){
+        gameAhorcado();
+        repeat = checkOutputGame(); 
+    }else if (game == 2){ 
+        gameTriki ();
+        repeat = checkOutputGame();
+    }else if (game == 3){
+        gameNim();
+        repeat = checkOutputGame();
+    }else{
+        printf("\n%c%cOpcion Invalida%c%c\n\n",177,177,177,177);
+        system("pause");
     }
     system ("cls");
 }while (repeat == 1);
