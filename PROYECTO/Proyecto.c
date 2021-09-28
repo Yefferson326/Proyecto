@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h> //para la funcion exit
 #include <conio.h>
+
+////////FUNCIONES GENERALES//////////
 void messageLose (){
     printf("\n %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c%c %c%c%c  %c%c%c%c%c %c%c%c%c%c %c%c%c%c%c %c%c%c%c%c",201,205,205,205,205,187,201,205,205,205,205,201,205,205,205,205,187,201,205,187,205,205,203,205,205,201,205,205,205,205,205,205,203,205,205,201,205,205,205,205);
     printf("\n %c    %c %c     %c    %c %c %c%c   %c   %c       %c   %c",186,186,186,186,186,186,200,187,186,186,186,186);
@@ -53,19 +55,22 @@ int checkOutputGame (){
     scanf("%d",&Game);
     return Game;
 }
-
+/////////////////FUNCIONES JUEGO AHORCADO//////////////////
 void gameAhorcado (){
     int beginning;
     do{
         system ("cls");
-        printf("\t\t\tAHORCADO\n1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
+        printf("\tAHORCADO\n\n");
+        pictureAhorcado();
+        printf("\n\n");
+        printf("1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
         scanf("%d",&beginning); 
         fflush (stdin);
         
         if (beginning == 1){
             categoryWords();
         }else if(beginning == 2){
-            instruccionsAhorcado();
+            instruccionesAhorcado();
         }else if (beginning == 3){
 
         }else{
@@ -74,14 +79,121 @@ void gameAhorcado (){
         }
     }while(beginning != 3);
 }   
-    void instruccionsAhorcado (){
+    void instruccionesAhorcado (){
         system ("cls");
-        printf("\t\tINSTRUCCIONES\nEste juego es de uno de los clasicos\nSe trata de adivinar la palabra incognita sin llegar al numero maximo de intentos(6) para evitar asi ahorcar al personaje\nEs decir si consigues evitar llegar a este punto\n");
+        printf("\t\tINSTRUCCIONES\n\t\t<<<AHORCADO>>>\nEste juego es de uno de los clasicos\nSe trata de adivinar la palabra incognita sin llegar al numero maximo de intentos(6) para evitar asi ahorcar al personaje\nEs decir si consigues evitar llegar a este punto\n");
         pictureAhorcado();
         printf("Despues de haber encontrado la palabra oculta\n\t***********GANAS***********\n");
         system("pause");    
     }
-    void playGameAhorcado (char words [][30],char category []){
+    
+    void categoryWords (){
+        int opcionCategory;
+        system ("cls");
+            printf("\t\t\t\tCATEGORIAS\nLas siguientes categorias te serviran como pistas para poder acertar la palabra oculta:\n1.Materiales de escuela\n2.Deportes\n3.Peliculas\n4.VideoJuegos\n5.Verduras\n");
+            printf("Escoge una de las categorias para comenzar a jugar:");
+            scanf("%d",&opcionCategory);
+            fflush (stdin);
+        
+            if (opcionCategory == 1) {
+                words(opcionCategory);
+            }else if (opcionCategory == 2){
+                words(opcionCategory);
+            }else if (opcionCategory == 3){
+                words(opcionCategory);
+            }else if (opcionCategory == 4){
+                words(opcionCategory);
+            }else if (opcionCategory == 5){
+                words(opcionCategory);
+            }else{
+                printf("\t\t\tValor incorrecto\n\t\t\tNo se encuentra esa seleccion\n");
+                categoryWords();
+        }
+        
+    }
+    void words (int opcionCategory){
+        char* categorys [5];
+        categorys [0]  = "Materiales de escuela";
+        categorys [1]  = "Deportes";
+        categorys [2]  = "Peliculas";
+        categorys [3]  = "VideoJuegos";
+        categorys [4] = "Verduras";
+                                
+        char* schoolSupplies [10];
+        schoolSupplies [0] = "CUADERNO";
+        schoolSupplies [1] = "LAPIZ";
+        schoolSupplies [2] = "BORRADOR";
+        schoolSupplies [3] = "ESFEROS";
+        schoolSupplies [4] = "CALCULADORA";
+        schoolSupplies [5] = "REGLA";
+        schoolSupplies [6] = "LIBROS";
+        schoolSupplies [7] = "TIJERAS";
+        schoolSupplies [8] = "COMPAS";
+        schoolSupplies [9] = "CORRECTOR";
+
+        char* sports [10];
+        sports [0] = "FUTBOL";
+        sports [1] = "TENIS";
+        sports [2] = "BALONCESTO";
+        sports [3] = "VOLEIBOL";
+        sports [4] = "NATACION";
+        sports [5] = "ATLETISMO";
+        sports [6] = "GOLF";
+        sports [7] = "TAEKWONDO";
+        sports [8] = "CICLISMO";
+        sports [9] = "LUCHA";
+
+        char* films [10];
+        films [0] = "UP"; 
+        films [1] = "SHREK"; 
+        films [2] = "DEADPOOL"; 
+        films [3] = "FROZEN"; 
+        films [4] = "MULAN"; 
+        films [5] = "RATATOUILLE"; 
+        films [6] = "TARZAN"; 
+        films [7] = "TURBO"; 
+        films [8] = "IT"; 
+        films [9] = "JOKER"; 
+
+        char* videoGames [10];
+        videoGames [0] = "MINECRAFT";
+        videoGames [1] = "FORNITE";
+        videoGames [2] = "PUGB";
+        videoGames [3] = "ZELDA";
+        videoGames [4] = "ROBLOX";
+        videoGames [5] = "FIFA";
+        videoGames [6] = "RUST";
+        videoGames [7] = "HALO";
+        videoGames [8] = "FARCRY";
+        videoGames [9] = "SONIC";
+
+        char* vegetables [10];
+        vegetables [0] = "AGUACATE";
+        vegetables [1] = "ZANAHORIA";
+        vegetables [2] = "COLIFLOR";
+        vegetables [3] = "LECHUGA";
+        vegetables [4] = "PEPINO";
+        vegetables [5] = "CEBOLLA";
+        vegetables [6] = "TOMATE";
+        vegetables [7] = "APIO";
+        vegetables [8] = "CALABAZA";
+        vegetables [9] = "PIMENTON";
+
+
+        if (opcionCategory == 1){
+            playGameAhorcado (schoolSupplies,categorys[opcionCategory-1]);
+        }else if (opcionCategory == 2){
+            playGameAhorcado (sports,categorys[opcionCategory-1]);
+        }else if (opcionCategory == 3){
+            playGameAhorcado (films,categorys[opcionCategory-1]);
+        }else if (opcionCategory == 4){
+            playGameAhorcado (videoGames,categorys[opcionCategory-1]);
+        }else if (opcionCategory == 5){
+            playGameAhorcado (vegetables,categorys[opcionCategory-1]);
+        }
+    }
+
+    void playGameAhorcado (char* words [],char* categorys []){
         int i,h,numberRandom,numberOfCaracters,points = 600,opportunities = 6,hiddenCharacters;
         char userLetter;
         srand (time(NULL));
@@ -97,7 +209,7 @@ void gameAhorcado (){
         do{
             int hits = 0;
             system ("cls");
-            printf("\t\t\t************COMENZEMOS**************\nCATEGORIA: %s\t\t\t\t\t TE QUEDAN %d INTENTOS\n\n",category,opportunities);
+            printf("\t\t\t************COMENZEMOS**************\nCATEGORIA: %s\t\t\t\t\t TE QUEDAN %d INTENTOS\n\n",categorys,opportunities);
             printf("TU PUNTUACION ES DE: %d\n",points);
             picturesGameAhorcado(opportunities);
 
@@ -139,6 +251,7 @@ void gameAhorcado (){
                 printf("\n\n");
                 messageWin ();
                 system("pause");
+                opportunities = -1;
             
             }
 
@@ -151,51 +264,7 @@ void gameAhorcado (){
         }while (opportunities >= 0); //todo esto se va a repetir si las oportunidades son iguales o mayores a 0
     
     }
-    void categoryWords (){
-        int opcionCategory;
-        system ("cls");
-            printf("\t\t\t\tCATEGORIAS\nLas siguientes categorias te serviran como pistas para poder acertar la palabra oculta:\n1.Materiales de escuela\n2.Deportes\n3.Peliculas\n4.VideoJuegos\n5.Verduras\n");
-            printf("Escoge una de las categorias para comenzar a jugar:");
-            scanf("%d",&opcionCategory);
-            fflush (stdin);
-        
-            if (opcionCategory == 1) {
-                words(opcionCategory);
-            }else if (opcionCategory == 2){
-                words(opcionCategory);
-            }else if (opcionCategory == 3){
-                words(opcionCategory);
-            }else if (opcionCategory == 4){
-                words(opcionCategory);
-            }else if (opcionCategory == 5){
-                words(opcionCategory);
-            }else{
-                printf("\t\t\tValor incorrecto\n\t\t\tNo se encuentra esa seleccion\n");
-                categoryWords();
-        }
-        
-    }
-    void words (int opcionCategory){
-        char categorys [5][30] = {"Materiales de escuela","Deportes","Peliculas","VideoJuegos","Comidas rapidas"};
-        char schoolSupplies [10][30] = {"CUADERNO","LAPIZ","BORRADOR","ESFEROS","CALCULADORA","REGLA","LIBROS","CORRECTOR","TIJERAS","COMPAS"};
-        char sports [10][30] = {"FUTBOL","TENIS","BALONCESTO","VOLEIBOL","NATACION","ATLETISMO","LUCHA","GOLF","TAEKWONDO","CICLISMO"};
-        char films [10][30] = {"UP","SHREK","DEADPOOL","FROZEN","MULAN","RATATOUILLE","TARZAN","TURBO","IT","JOKER"};
-        char videoGames [10][30] = {"MINECRAFT","FORNITE","PUGB","ZELDA","ROBLOX","FIFA","RUST","HALO","FARCRY","SONIC"};
-        char vegetables [10][30] = {"AGUACATE","ZANAHORIA","COLIFLOR","LECHUGA","PEPINO","CEBOLLA","TOMATE","APIO","CALABAZA","PIMENTON"};
 
-
-        if (opcionCategory == 1){
-            playGameAhorcado (schoolSupplies,categorys[opcionCategory-1]);
-        }else if (opcionCategory == 2){
-            playGameAhorcado (sports,categorys[opcionCategory-1]);
-        }else if (opcionCategory == 3){
-            playGameAhorcado (films,categorys[opcionCategory-1]);
-        }else if (opcionCategory == 4){
-            playGameAhorcado (videoGames,categorys[opcionCategory-1]);
-        }else if (opcionCategory == 5){
-            playGameAhorcado (vegetables,categorys[opcionCategory-1]);
-        }
-    }
     void picturesGameAhorcado (int opportunities){
         if (opportunities == 6){
             printf("      %c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,187);
@@ -263,12 +332,146 @@ void gameAhorcado (){
         }
     
     }
+/////////////////////////FUNCIONES JUEGO/////////////////////////    
 void gameTriki (){
     
 }
-
+/////////////////////////FUNCIONES JUEGO DE NIM///////////////////
 void gameNim (){
+    int beginning;
+    do{
+        system ("cls");
+        printf("\tJUEGO DE NIM\n\n");
+        pictureNim();
+        printf("\n");
+        printf("1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
+        scanf("%d",&beginning); 
+        fflush (stdin);
+        
+        if (beginning == 1){
+            playGameNim ();
+        }else if(beginning == 2){
+            instruccionesJuegoDeNim();
+        }else if (beginning == 3){
+
+        }else{
+            printf("Opcion incorrecta\n");
+            system("pause");
+        }
+    }while(beginning != 3);
+}
+
+void playGameNim (){
+    int minChopsticks = 5;
+    int numChopsticks, userPlay, maxPlay;
+
+    printf ("\n\tEL JUEGO DE NIM\n\n");
+    do{
+        system("cls");
+        printf ("Para comenzar el juego\n %cDigite el numero de palillos que desea ingresar en el contenedor vacio\n\n",175);
+        pictureNimVoid();
+        printf("%cEl numero minimo de palillos puede ser de %d!\n",173,minChopsticks);
+        printf ("-->");
+        scanf ("%d", &numChopsticks);
+        fflush(stdin);
+        if (numChopsticks < minChopsticks){
+            printf("\n%cCantidad incorrecta!\nEs un numero muy peque%co y no sera divertido\n\n",173,164);
+            system("pause");
+        }
+    }while (numChopsticks < minChopsticks);
+
+    do{
+        system("cls");
+        printf("Ahora digite el numero maximo de palillos que puede sacar del contenedor en cada ronda\n(debe ser mayor 1 y menor a %d):",numChopsticks);
+        scanf("%d",&maxPlay);
+        fflush(stdin);
+        if (maxPlay <= 1 || maxPlay >= numChopsticks ){
+            printf("\n%cValor incorrecto!\nTenga en cuenta el rango del numero maximo de juagadas\n",173);
+            system("pause");
+        }
+    }while(maxPlay <= 1 || maxPlay >= numChopsticks);
+
+    system("cls");
+    printf("\n\t\tRECUERDA QUE TIENES\n\n");
+    printf("%c%c%c%c %c %c%c%c\n",201,188,92,47,47,92,200,187);
+    printf("%c%c %c  %c %c%c    El numero maximo de palillos que puedes sacar\n",186,47,92,47,92,186);
+    printf("%c%c %c%d%c %c%c     en cada ronda es de %c%d%c\n",186,92,173,numChopsticks,33,47,186,173,maxPlay,33);
+    printf("%cPalillos%c\n",186,186);
+    printf("%c%c%c%c%c%c%c%c%c%c\n\n",200,205,205,205,205,205,205,205,205,188);
+    printf("\t%c%cASI QUE COMENZEMOS!!\n\n",173,173);
+    system("pause");
+
+
+    while (numChopsticks > 1) {
+        do{
+        system("cls");
+        printf("De los %d palillos en el recipiente %cCuantos palillos desea retirar del contenedor (Entre 1 a %d palillos)?\n->",numChopsticks,168,maxPlay);
+        scanf("%d", &userPlay);
+        fflush(stdin);
+            if (userPlay<=0 || userPlay>maxPlay){
+                printf("\n%cValor incorrecto!\nTenga en cuenta el rango del numero maximo de juagadas\n\n",173);
+                system("pause");
+            }
+        }while (userPlay<=0 || userPlay>maxPlay);
+
+        numChopsticks = numChopsticks - userPlay;
+
+        if (numChopsticks < 1){
+        messageLose ();
+        printf("\n\n%c%cMALA JUGADA!!\nINTENTA DE NUEVO\n",173,173);
+        system ("pause");
+        }else if (numChopsticks == 1){
+        messageWin ();
+        printf("\n\nLA MAQUINA TUVO QUE SACAR EL ULTIMO PALILLO\n");
+        system ("pause");
+        }else {
+            userPlay = numChopsticks%(maxPlay+1); 
+            printf ("%d",userPlay);
+            system("pause");
+            
+            if (!userPlay){
+                userPlay = maxPlay;
+            }else if(userPlay > 1){
+                userPlay --;
+            }
+
+            printf("Quedan %d palillos en el recipiente\n\n",numChopsticks);
+            system("pause");
+            system("cls");
+            printf("AHORA ES TURNO DE LA MAQUINA\n",numChopsticks);
+
+            if (userPlay>1){
+                printf("->Yo retiro %d palillos.\n",userPlay);
+            }else {
+                printf("->Yo retiro 1 palillo.\n");
+            }
+            numChopsticks = numChopsticks - userPlay;
+            if (numChopsticks == 1){
+                messageLose();
+                printf("\n\n%c%cMALA JUGADA!!\nINTENTA DE NUEVO\n",173,173);
+                system("pause");
+            }else{
+                printf("Asi que quedan %d palillos en el recipiente.\n\n", numChopsticks);
+                system("pause");
+            }
+        }
+    }
     
+}
+void instruccionesJuegoDeNim (){
+    system ("cls");
+    printf("\n   INSTRUCCIONES\n <<<JUEGO DE NIM>>>\n\n");
+    pictureNim();
+    printf("Es un juego muy simple, consiste en ir retirando palillos de un mont%cn,\ny pierde el jugador que se ve obligado a retirar el %cltimo palillo.\nEn este caso el jugador al que te enfrenteras sera la misma maquina\n\t\tSUERTE =)\n\n",162,163);
+    system("pause");  
+}
+void pictureNimVoid (){
+    printf("       %c%c    %c%c\n",201,188,200,187);
+    printf("       %c      %c\n",186,186);
+    printf("       %c      %c\n",186,186);
+    printf("       %c      %c\n",186,186);
+    printf("       %c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,188);
+
 }
 
 int main(){
@@ -277,24 +480,27 @@ int game,repeat;
 do{
     system ("cls");
     printf("\t\t\t\tBIENVENIDO\n");
-    printf("%cQue quieres jugar hoy?\n1.AHORCADO\n",168);
-        pictureAhorcado();
+    printf("%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
+    pictureAhorcado();
+    printf("\n");
     printf("2.TRES EN RAYA (TRIKI)\n");
-        pictureTriki();
-    printf("3.JUEGO DE NIM\n");
-        pictureNim();
+    pictureTriki();
+    printf("\n");
+    printf("3.JUEGO DE NIM\n\n");
+    pictureNim();
+    printf("\n");
     printf("Selecione una opcion:");
     scanf("%d", &game);
     fflush (stdin);
 
     if (game == 1){
-        gameAhorcado();
+        gameAhorcado("AHORCADO");
         repeat = checkOutputGame(); 
     }else if (game == 2){ 
-        gameTriki ();
+        gameTriki ("TRIKI");
         repeat = checkOutputGame();
     }else if (game == 3){
-        gameNim();
+        gameNim("JUEGO DE NIM");
         repeat = checkOutputGame();
     }else{
         printf("\n%c%cOpcion Invalida%c%c\n\n",177,177,177,177);
