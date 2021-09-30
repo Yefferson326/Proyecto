@@ -2,8 +2,18 @@
 #include <string.h>
 #include <stdlib.h> //para la funcion exit
 #include <conio.h>
+#include <ctype.h> // para Toupper
 
 ////////FUNCIONES GENERALES//////////
+void messageWelcome (){
+    printf("\t _____                                                     _\n");
+    printf("\t|  _  %c  _                                         _      | |\n",92);
+    printf("\t| |_| | |_|                                       |_|     | |\n"); 
+    printf("\t|     /  _    ____  _     __    __  ____   _       _   ___| |  _____\n");
+    printf("\t|  _  %c | |  / _  %c| |___ %c %c  / / / _  %c | |___  | | /  _  | |  _  |\n",92,92,92,92,92);
+    printf("\t| |_| | | | |  ___/|  _  | %c %c/ / |  ___/ |  _  | | | | |_| | | |_| |\n",92,92);
+    printf("\t|_____/ |_| %c_____||_| |_|  %c__/  %c_____| |_| |_| |_| %c_____| |_____|\n",92,92,92,92);
+}
 void messageLose (){
     printf("\n %c%c%c%c%c%c %c%c%c%c%c %c%c%c%c%c%c %c%c%c  %c%c%c%c%c %c%c%c%c%c %c%c%c%c%c %c%c%c%c%c",201,205,205,205,205,187,201,205,205,205,205,201,205,205,205,205,187,201,205,187,205,205,203,205,205,201,205,205,205,205,205,205,203,205,205,201,205,205,205,205);
     printf("\n %c    %c %c     %c    %c %c %c%c   %c   %c       %c   %c",186,186,186,186,186,186,200,187,186,186,186,186);
@@ -32,12 +42,17 @@ void pictureAhorcado (){
     printf("       %c%c%c%c%c\n",205,205,202,205,205);
 }
 
-void pictureTriki (){
-    printf("      %c %c %c %c\n",88,186,79,186);
-    printf("     %c%c%c%c%c%c%c%c%c%c%c\n",205,205,205,206,205,205,205,206,205,205,205);
-    printf("      %c %c %c %c\n",79,186,88,186);
-    printf("     %c%c%c%c%c%c%c%c%c%c%c\n",205,205,205,206,205,205,205,206,205,205,205);
-    printf("        %c %c %c %c\n",186,79,186,88);
+void pictureBuscaminas (){
+    printf("            _\n");
+    printf("         __|_|__\n");
+    printf("        /       %c\n",92);
+    printf("       /         %c\n",92);
+    printf("     _|     _     |_\n");
+    printf("    |_|    |_|    |_|\n");
+    printf("      |           |\n");
+    printf("       %c         /\n",92);
+    printf("        %c_______/\n",92);
+    printf("           |_|\n");
 }
 
 void pictureNim (){
@@ -81,7 +96,7 @@ void gameAhorcado (){
 }   
     void instruccionesAhorcado (){
         system ("cls");
-        printf("\t\tINSTRUCCIONES\n\t\t<<<AHORCADO>>>\nEste juego es de uno de los clasicos\nSe trata de adivinar la palabra incognita sin llegar al numero maximo de intentos(6) para evitar asi ahorcar al personaje\nEs decir si consigues evitar llegar a este punto\n");
+        printf("\t\tINSTRUCCIONES\n\t\t<<<AHORCADO>>>\n\nEste juego es de uno de los clasicos\nSe trata de adivinar la palabra incognita sin llegar al numero maximo de intentos(6) para evitar asi ahorcar al personaje\nEs decir si consigues evitar llegar a este punto\n\n");
         pictureAhorcado();
         printf("Despues de haber encontrado la palabra oculta\n\t***********GANAS***********\n");
         system("pause");    
@@ -219,9 +234,10 @@ void gameAhorcado (){
             }
 
             if (opportunities != 0){ //se coloca este if para que cuando las oportunidades lleguen a 0, este mensaje no se vuelva a mostrar, ya que sino quedaria incoherente el programa
-            printf ("\n\nIngrese una letra (EN MAYUSCULA) que crea que puede estar dentro de la palabra:");
+            printf ("\n\nIngrese una letra que crea que puede estar dentro de la palabra:");
             scanf ("%c",&userLetter);
             fflush (stdin); //limpia el buffer y generalmente se coloca para evitar errores al momento de correr el programa
+            userLetter = toupper (userLetter); //convierte en mayuscula la letra ingresada por el usuario
             }
             
             for (h = 0; h < numberOfCaracters; h ++){
@@ -250,6 +266,7 @@ void gameAhorcado (){
             if (hiddenCharacters == 0){ // a partir de ciclo anterior, considera que ya no existe ningun caracter oculto representado por '_' significa que ele jugador a conseguido adivinar la palabra y se mostrara el mensaje ganador
                 printf("\n\n");
                 messageWin ();
+                printf("\t\tLA PALABRA OCULTA ERA %s\n\n", words[numberRandom]);
                 system("pause");
                 opportunities = -1;
             
@@ -332,10 +349,61 @@ void gameAhorcado (){
         }
     
     }
-/////////////////////////FUNCIONES JUEGO/////////////////////////    
-void gameTriki (){
-    
+/////////////////////////FUNCIONES JUEGO BUSCAMINAS/////////////////////////    
+void gameBuscaminas (){
+    int beginning;
+    do{
+        system ("cls");
+        printf("\tBUSCAMINAS\n\n");
+        pictureBuscaminas();
+        printf("\n\n");
+        printf("1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
+        scanf("%d",&beginning); 
+        fflush (stdin);
+        
+        if (beginning == 1){
+            categoryWords();
+        }else if(beginning == 2){
+            instruccionsBuscaminas ();
+        }else if (beginning == 3){
+
+        }else{
+            printf("Opcion incorrecta\n");
+            system("pause");
+        }
+    }while(beginning != 3);
 }
+
+void instruccionsBuscaminas(){
+    system ("cls");
+    printf("\n\t\t\t  INSTRUCCIONES\n\t\t\t<<<BUSCAMINAS>>>\n\n");
+    printf("\t\t\t        _\n");
+    printf("\t\t\t     __|_|__\n");
+    printf("\t\t\t    /       %c\n",92);
+    printf("\t\t\t   /         %c\n",92);
+    printf("\t\t\t _|     _     |_\n");
+    printf("\t\t\t|_|    |_|    |_|\n");
+    printf("\t\t\t  |           |\n");
+    printf("\t\t\t   %c         /\n",92);
+    printf("\t\t\t    %c_______/\n",92);
+    printf("\t\t\t       |_|\n");
+    printf("\nLa logica de este juego sigue la misma del original, se trata de intentar no tocar ninguna mina(%c) a partir\nde los numeros que salen en la pantalla, y que te indican cuantas minas existen desde ese cuadro a la redonda.\nEn esta version para poder selecionar una recuadro tendras que elegir la fila y la columna en la que coincida\nel recuadro que quieras elegir. Dicho recuadro es de la siguiente forma:\n\n",207);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,203,205,205,205,203,205,205,205,203,205,205,205,203,205,205,205,203,205,205,205,187);
+    printf("\t%c   %c 1 %c 2 %c 3 %c 4 %c 5 %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",204,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,185);
+    printf("\t%c A %c   %c   %c   %c   %c   %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",204,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,185);
+    printf("\t%c B %c   %c   %c   %c   %c   %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",204,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,185);
+    printf("\t%c C %c   %c   %c   %c   %c   %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",204,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,185);
+    printf("\t%c D %c   %c   %c   %c   %c   %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",204,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,206,205,205,205,185);
+    printf("\t%c E %c   %c   %c   %c   %c   %c\n",186,186,186,186,186,186,186);
+    printf("\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n\n\t\t%c%c%cSUERTE!!!\n\n",200,205,205,205,202,205,205,205,202,205,205,205,202,205,205,205,202,205,205,205,202,205,205,205,188,173,173,173);
+    system("pause");
+ }
+
 /////////////////////////FUNCIONES JUEGO DE NIM///////////////////
 void gameNim (){
     int beginning;
@@ -478,13 +546,12 @@ int main(){
 
 int game,repeat;
 do{
-    system ("cls");
-    printf("\t\t\t\tBIENVENIDO\n");
-    printf("%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
+    messageWelcome();
+    printf("\n%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
     pictureAhorcado();
     printf("\n");
-    printf("2.TRES EN RAYA (TRIKI)\n");
-    pictureTriki();
+    printf("2.BUSCAMINAS\n");
+    pictureBuscaminas();
     printf("\n");
     printf("3.JUEGO DE NIM\n\n");
     pictureNim();
@@ -494,13 +561,13 @@ do{
     fflush (stdin);
 
     if (game == 1){
-        gameAhorcado("AHORCADO");
+        gameAhorcado();
         repeat = checkOutputGame(); 
     }else if (game == 2){ 
-        gameTriki ("TRIKI");
+        gameBuscaminas ();
         repeat = checkOutputGame();
     }else if (game == 3){
-        gameNim("JUEGO DE NIM");
+        gameNim();
         repeat = checkOutputGame();
     }else{
         printf("\n%c%cOpcion Invalida%c%c\n\n",177,177,177,177);
