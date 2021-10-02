@@ -1,30 +1,12 @@
 
+void pictureNimVoid (){
+    printf("       %c%c    %c%c\n",201,188,200,187);
+    printf("       %c      %c\n",186,186);
+    printf("       %c      %c\n",186,186);
+    printf("       %c      %c\n",186,186);
+    printf("       %c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,188);
 
-/////////////////////////FUNCIONES JUEGO DE NIM/////////////////////////  
-void gameNim (){
-    int beginning;
-    do{
-        system ("cls");
-        printf("\tJUEGO DE NIM\n\n");
-        pictureNim();
-        printf("\n");
-        printf("1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
-        scanf("%d",&beginning); 
-        fflush (stdin);
-        
-        if (beginning == 1){
-            playGameNim ();
-        }else if(beginning == 2){
-            instruccionesJuegoDeNim();
-        }else if (beginning == 3){
-
-        }else{
-            printf("Opcion incorrecta\n");
-            system("pause");
-        }
-    }while(beginning != 3);
 }
-
 void playGameNim (){
     int minChopsticks = 5;
     int numChopsticks, userPlay, maxPlay;
@@ -122,6 +104,7 @@ void playGameNim (){
     }
     
 }
+
 void instruccionesJuegoDeNim (){
     system ("cls");
     printf("\n   INSTRUCCIONES\n <<<JUEGO DE NIM>>>\n\n");
@@ -129,11 +112,27 @@ void instruccionesJuegoDeNim (){
     printf("Es un juego muy simple, consiste en ir retirando palillos de un mont%cn,\ny pierde el jugador que se ve obligado a retirar el %cltimo palillo.\nEn este caso el jugador al que te enfrenteras sera la misma maquina\n\t\tSUERTE =)\n\n",162,163);
     system("pause");  
 }
-void pictureNimVoid (){
-    printf("       %c%c    %c%c\n",201,188,200,187);
-    printf("       %c      %c\n",186,186);
-    printf("       %c      %c\n",186,186);
-    printf("       %c      %c\n",186,186);
-    printf("       %c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,188);
+void gameNim (){
+    int beginning;
+    do{
+        system ("cls");
+        printf("\tJUEGO DE NIM\n\n");
+        pictureNim();
+        printf("\n");
+        printf("1.Jugar\n2.Explicame de que se trata\n3.Salirme\nSelecciona una opcion:");
+        scanf("%d",&beginning); 
+        fflush (stdin);
+        
+        if (beginning == 1){
+            playGameNim ();
+        }else if(beginning == 2){
+            instruccionesJuegoDeNim();
+        }else if (beginning == 3){
 
+        }else{
+            printf("Opcion incorrecta\n");
+            system("pause");
+        }
+    }while(beginning != 3);
 }
+

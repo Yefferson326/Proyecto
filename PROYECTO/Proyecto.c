@@ -9,11 +9,12 @@
 #include "Mensajes.c"
 
 
+
+
 int main(){
 
 int game,repeat;
-do{
-    system("cls");
+do{ 
     messageWelcome();
     printf("\n%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
     pictureAhorcado();

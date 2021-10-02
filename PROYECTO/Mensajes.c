@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <string.h>
 
-////////FUNCIONES GENERALES//////////
 void messageWelcome (){
     printf("\t _____                                                     _\n");
     printf("\t|  _  %c  _                                         _      | |\n",92);
