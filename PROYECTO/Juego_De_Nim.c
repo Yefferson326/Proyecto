@@ -9,7 +9,7 @@ void pictureNimVoid (){
 }
 void playGameNim (){
     int minChopsticks = 5;
-    int numChopsticks, userPlay, maxPlay;
+    int numChopsticks, userPlay, maxPlay, machinePlay;
 
     printf ("\n\tEL JUEGO DE NIM\n\n");
     do{
@@ -72,13 +72,13 @@ void playGameNim (){
         printf("\n\nLA MAQUINA TUVO QUE SACAR EL ULTIMO PALILLO\n");
         system ("pause");
         }else {
-            userPlay = numChopsticks%(maxPlay+1); 
+            machinePlay = numChopsticks%(maxPlay+1); 
             system("pause");
-            
-            if (!userPlay){
-                userPlay = maxPlay;
-            }else if(userPlay > 1){
-                userPlay --;
+        
+            if(machinePlay > 1){
+                machinePlay --;
+            }else{
+                machinePlay = maxPlay;
             }
 
             printf("Quedan %d palillos en el recipiente\n\n",numChopsticks);
@@ -86,12 +86,12 @@ void playGameNim (){
             system("cls");
             printf("AHORA ES TURNO DE LA MAQUINA\n",numChopsticks);
 
-            if (userPlay>1){
-                printf("->Yo retiro %d palillos.\n",userPlay);
+            if (machinePlay>1){
+                printf("->Yo retiro %d palillos.\n",machinePlay);
             }else {
                 printf("->Yo retiro 1 palillo.\n");
             }
-            numChopsticks = numChopsticks - userPlay;
+            numChopsticks = numChopsticks - machinePlay;
             if (numChopsticks == 1){
                 messageLose();
                 printf("\n\n%c%cMALA JUGADA!!\nINTENTA DE NUEVO\n",173,173);
