@@ -307,7 +307,7 @@ void instruccionsTriki(){
     printf("\t\tSUERTE =)\n");
     system("pause");
  }
-void gameTriki (){
+void gameTriki (){//FUNCION DEL MENU DEL JUEGO DEL AHORCADO
     int beginning;
     do{
         system ("cls");
@@ -323,7 +323,7 @@ void gameTriki (){
         }else if(beginning == 2){
             instruccionsTriki ();
         }else if (beginning == 3){
-
+            
         }else{
             printf("Opcion incorrecta\n");
             system("pause");

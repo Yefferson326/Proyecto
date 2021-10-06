@@ -8,14 +8,9 @@
 #include "Juego_De_Nim.c"
 #include "Mensajes.c"
 
-
-
-
 int main(){
-
 int game,repeat;
 do{ 
-    system("cls");
     messageWelcome();
     printf("\n%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
     pictureAhorcado();

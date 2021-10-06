@@ -52,9 +52,15 @@ void pictureNim (){
 }
 
 int checkOutputGame (){
-    int Game;
+    int exitOrChange;
+    do{
     system ("cls");
     printf("Quieres quieres hacer:\n1.Cambiar de juego\n2.Salir de la aplicacion\nSeleccione una opcion:");
-    scanf("%d",&Game);
-    return Game;
+    scanf("%d",&exitOrChange);
+        if (exitOrChange != 1 && exitOrChange != 2){
+            printf("\n\n!!!!!OPCION INCORRECTA%c%c%c%c%c\n",173,173,173,173,173);
+            system("pause");
+        }
+    }while(exitOrChange != 1 && exitOrChange != 2);
+    return exitOrChange;
 }
