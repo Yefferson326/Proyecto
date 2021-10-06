@@ -11,6 +11,7 @@
 int main(){
 int game,repeat;
 do{ 
+    system("cls");
     messageWelcome();
     printf("\n%cQue quieres jugar hoy?\n\n1.AHORCADO\n",168);
     pictureAhorcado();
